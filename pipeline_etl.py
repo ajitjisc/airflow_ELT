@@ -3,7 +3,6 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import pandas as pd
 from pandas.io.json import json_normalize
-import boto3
 from datetime import datetime
 import s3fs
 
