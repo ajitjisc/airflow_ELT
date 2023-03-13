@@ -27,19 +27,19 @@ dag = DAG(
 
 #task_1
 task_1 = PythonOperator(
-    task_id='get the list of institutions and laconfig details',
+    task_id='get_the_list_of_institutions_and_laconfig_details',
     python_callable=generate_institutions,
     dag=dag, 
 )
 #task_2
 task_2 = PythonOperator(
-    task_id='get datax enabled institutions',
+    task_id='get_datax_enabled_institutions',
     python_callable=get_datax_enabled_institutions,
     dag=dag, 
 )
 #task_3
 task_3 = PythonOperator(
-    task_id='get the report flags and generate reports',
+    task_id='get_the_report_flags_and_generate_reports',
     python_callable=check_attendance_plus_and_generate_reports,
     dag=dag, 
 )
