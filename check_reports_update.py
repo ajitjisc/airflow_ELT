@@ -11,7 +11,7 @@ def check_file_updated_within_2_mins(file_path):
     return False
 
 def check_report1():
-    reports = ['report1.tsv']
+    reports = ['lastactivity.tsv']
     institutions = get_datax_enabled_institutions()
 
     for inst in institutions:
@@ -27,7 +27,7 @@ def check_report1():
 
 
 def check_report2():
-    reports = ['report2.tsv']
+    reports = ['tlc.tsv']
     institutions = get_datax_enabled_institutions()
 
     for inst in institutions:
@@ -43,11 +43,13 @@ def check_report2():
 
 
 def check_report3():
-    reports = ['report3.tsv']
+    reports = ['attendance.tsv']
     institutions = get_datax_enabled_institutions()
 
     for inst in institutions:
         inst_name = inst['name']
+        if not inst['function-attendance-plus-enabled']:
+            continue
         inst_reports_path = os.path.join(inst_name, 'reports')
         if os.path.exists(inst_reports_path):
             for report in reports:
@@ -56,6 +58,7 @@ def check_report3():
                     raise Exception(f"{file_path} has not been updated within 2 mins.")
         else:
             print(f"No reports found in {inst_name}.")
+
 
 
 

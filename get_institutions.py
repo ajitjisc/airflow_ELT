@@ -9,7 +9,7 @@ def generate_institutions():
         if i == 2:
             function_attendance_plus_enabled = False
         institution = {
-            "name": f"inst{i}",
+            "name": f"institution_{i}",
             "function-datax-enabled": function_datax_enabled,
             "function-alma-enabled": None,
             "function-campusm-enabled": None,
