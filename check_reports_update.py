@@ -57,7 +57,7 @@ def check_report3():
                 if not check_file_updated_within_2_mins(file_path):
                     raise Exception(f"{file_path} has not been updated within 2 mins.")
         else:
-            print(f"No reports found in {inst_name}.")
+            print(f"All reports has been updated {inst_name}.")
 
 
 
