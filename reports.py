@@ -83,3 +83,47 @@ def generate_report3(file_path):
 
     return os.path.abspath(file_path)
 
+def generate_report3_fail(file_path):
+    # Define the field names for the TSV file
+    fieldnames = ['Name', 'Age', 'category']
+
+    # Generate some dummy data
+    data = [
+        {'Name': 'xxxx', 'Age': 35, 'category': '0'},
+        {'Name': 'xxxx', 'Age': 28, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 42, 'category': '1'},
+        {'Name': 'xxxx', 'Age': '55', 'category': '1'},
+        {'Name': 'xxxx', 'Age': 55, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 35, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 28, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 42, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 19, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 'two', 'category': '1'},
+        {'Name': 'xxxx', 'Age': 35, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 28, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 42, 'category': '1'},
+        {'Name': 'xxxx', 'Age': 19, 'category': '0'},
+        {'Name': 'xxxx', 'Age': 55, 'category': '0'},
+        {'Name': 'xxxx', 'Age': 35, 'category': '0'},
+        {'Name': 'xxxx', 'Age': 'four', 'category': '0'},
+        {'Name': 'xxxx', 'Age': 42, 'category': '0'},
+        {'Name': 'xxxx', 'Age': 19, 'category': '0'},
+        {'Name': 'xxxx', 'Age': 55, 'category': '0'},
+        
+    ]
+
+
+    # Write the data to the TSV file
+    with open(file_path, 'w', newline='') as tsvfile:
+        writer = csv.DictWriter(tsvfile, fieldnames=fieldnames, delimiter='\t')
+        writer.writeheader()
+        for row in data:
+            if not isinstance(row['Name'], str):
+                raise TypeError(f"Invalid value for 'Name': {row['Name']}")
+            if not isinstance(row['Age'], int):
+                raise TypeError(f"Invalid value for 'Age': {row['Age']}")
+            if not isinstance(row['category'], str):
+                raise TypeError(f"Invalid value for 'category': {row['category']}")
+            writer.writerow(row)
+
+    return os.path.abspath(file_path)
